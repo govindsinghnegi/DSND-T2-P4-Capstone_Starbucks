@@ -17557,9 +17557,19 @@ We will extract the transaction amount related to this successful offer as well.
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This step takes more than 15 minutes to complete. Thus, I have already saved the generated dataframe</span>
 <span class="c1"># in a csv file (master_data.csv) and loaded in the subsequent step.</span>
-<span class="k">def</span> <span class="nf">create_master_df</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">create_master_df</span><span class="p">(</span><span class="n">portfolio_clean</span><span class="p">,</span> <span class="n">profile_clean</span><span class="p">,</span> <span class="n">offer_df</span><span class="p">,</span> <span class="n">transaction_df</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Creates a single master dataframe by using information from other dataframes</span>
+<span class="sd">    input:</span>
+<span class="sd">       - portfolio_clean: preprocessed portfolio dataframe</span>
+<span class="sd">       - profile_clean: preprocessed profile dataframe</span>
+<span class="sd">       - offer_df: dataframe containing all events except transactions </span>
+<span class="sd">       - transaction_df: dataframe containing transaction events only</span>
+<span class="sd">    output:</span>
+<span class="sd">        - list storing rows of master dataframe</span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">master_list</span> <span class="o">=</span> <span class="p">[]</span>
-
+    
     <span class="c1"># iterate every user</span>
     <span class="k">for</span> <span class="n">user_id</span> <span class="ow">in</span> <span class="n">profile_clean</span><span class="p">[</span><span class="s1">&#39;user_id&#39;</span><span class="p">]:</span>
         <span class="c1"># extract user info</span>
@@ -17623,7 +17633,7 @@ We will extract the transaction amount related to this successful offer as well.
 <div class="prompt input_prompt">In&nbsp;[69]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#master_df = pd.DataFrame(create_master_df())</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#master_df = pd.DataFrame(create_master_df(portfolio_clean, profile_clean, offer_df, transaction_df))</span>
 <span class="c1">#master_df.to_csv(&#39;master_data.csv&#39;)</span>
 </pre></div>
 
@@ -18258,19 +18268,6 @@ avg / total     0.9173    0.9169    0.9170     16626
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
 </div>
     </div>
   </div>
